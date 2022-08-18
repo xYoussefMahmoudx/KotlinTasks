@@ -1,27 +1,40 @@
-import java.util.*
+import java.util.Scanner
 
-fun main (){
-    var input = Scanner(System.`in`)
+fun main(){
+var scn =Scanner(System.`in`)
+    println("enter bmw car model color and speed")
+    val bm = BMW(scn.next(),scn.next(),scn.nextFloat())
+    scn.nextLine()
+    println("fuel type is ${bm.getFuelType()}")
+    println("enter tesla car model color and speed")
+    val ts = BMW(scn.next(),scn.next(),scn.nextFloat())
+    scn.nextLine()
+    println("fuel type is ${ts.getFuelType()}")
+}
 
-    var N = input.nextInt();
-        input .nextLine()
-    var listOfNames = mutableListOf<String>()
-    var c =0;
+abstract  class Car(model:String,color:String,speed:Float){
 
-    while(c<N){
 
-        listOfNames.add(   input.nextLine())
-
-        c++
+    open fun getFuelType():String{
+        return "no spacfic fuel"
     }
 
-    for(item in listOfNames){
-      if(item.contains("M", true))
-          println(item.uppercase(Locale.getDefault()))
-          else if (item.contains("A", true))
-          println(item.uppercase(Locale.getDefault()))
-        else
-            continue;
-    }
 
+}
+ class BMW (model:String,color:String,speed:Float): Car(model,color,speed){
+
+     override fun getFuelType(): String {
+
+         return "gas"
+
+     }
+ }
+
+class Tesla (model:String,color:String,speed:Float): Car(model,color,speed){
+
+    override fun getFuelType(): String {
+
+        return "electricity"
+
+    }
 }
